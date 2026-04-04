@@ -1,0 +1,13 @@
+<div class="candy-card">
+  <h3><%= link_to candy.name, candy %></h3>
+  <p class="candy-meta">
+    <%= link_to candy.brand.name, candy.brand %> &middot;
+    <%= link_to candy.category.name, candy.category %>
+  </p>
+  <% if candy.description.present? %>
+    <p><%= candy.description %></p>
+  <% end %>
+  <% if candy.year_introduced %>
+    <p class="candy-year">Desde <%= candy.year_introduced %></p>
+  <% end %>
+</div>

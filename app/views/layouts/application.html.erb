@@ -24,6 +24,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="main-nav">
+      <%= link_to "Candy Directory", root_path %>
+      <%= link_to "Dulces", candies_path %>
+      <%= link_to "Marcas", brands_path %>
+      <%= link_to "Categorías", categories_path %>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

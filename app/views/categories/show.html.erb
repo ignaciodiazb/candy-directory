@@ -1,0 +1,13 @@
+<% content_for(:title, "#{@category.name} — Candy Directory") %>
+
+<h1><%= @category.name %></h1>
+
+<% if @category.description.present? %>
+  <p><%= @category.description %></p>
+<% end %>
+
+<h2>Dulces en <%= @category.name %></h2>
+
+<%= render partial: "candies/candy", collection: @candies %>
+
+<%= link_to "← Volver a categorías", categories_path %>
