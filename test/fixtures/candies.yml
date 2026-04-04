@@ -1,7 +1,7 @@
 super_ocho:
   name: Super Ocho
   slug: super-ocho
-  description: Iconic Chilean wafer bar covered in chocolate.
+  description: Icónica barra de oblea cubierta de chocolate.
   brand: costa
   category: chocolate
   year_introduced: 1956
@@ -10,7 +10,7 @@ super_ocho:
 cocoa:
   name: Cocoa
   slug: cocoa
-  description: Classic chocolate candy bar.
+  description: Clásica barra de chocolate chilena.
   brand: costa
   category: chocolate
   discontinued: false
@@ -18,7 +18,7 @@ cocoa:
 caluga_media_hora:
   name: Caluga Media Hora
   slug: caluga-media-hora
-  description: Traditional Chilean soft caramel candy.
+  description: Tradicional caluga blanda chilena.
   brand: ambrosoli
   category: caramelo
   discontinued: false
@@ -26,7 +26,7 @@ caluga_media_hora:
 mentita:
   name: Mentita
   slug: mentita
-  description: Mint-flavored hard candy.
+  description: Caramelo duro sabor menta.
   brand: ambrosoli
   category: caramelo
   year_introduced: 1950

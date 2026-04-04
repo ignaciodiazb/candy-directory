@@ -4,7 +4,7 @@ class CategoryTest < ActiveSupport::TestCase
   # --- Validations ---
 
   test "is valid with valid attributes" do
-    category = Category.new(name: "Gomita", description: "Gummy candies")
+    category = Category.new(name: "Gomitas", description: "Caramelos de goma y gomitas")
     assert category.valid?
   end
 
@@ -24,13 +24,13 @@ class CategoryTest < ActiveSupport::TestCase
   # --- Slugs ---
 
   test "generates slug from name" do
-    category = Category.new(name: "Barra de Chocolate")
+    category = Category.new(name: "Barras de Chocolate")
     category.valid?
-    assert_equal "barra-de-chocolate", category.slug
+    assert_equal "barras-de-chocolate", category.slug
   end
 
   test "to_param returns slug" do
-    assert_equal "chocolate", categories(:chocolate).to_param
+    assert_equal "chocolates", categories(:chocolate).to_param
   end
 
   # --- Associations ---
