@@ -1,0 +1,15 @@
+<% content_for(:title, "#{@brand.name} — Candy Directory") %>
+
+<h1><%= @brand.name %></h1>
+
+<% if @brand.description.present? %>
+  <p><%= @brand.description %></p>
+<% end %>
+
+<p><%= @brand.country_of_origin %></p>
+
+<h2>Dulces de <%= @brand.name %></h2>
+
+<%= render partial: "candies/candy", collection: @candies %>
+
+<%= link_to "← Volver a marcas", brands_path %>
