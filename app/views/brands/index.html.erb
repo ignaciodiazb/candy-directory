@@ -1,0 +1,13 @@
+<% content_for(:title, "Marcas — Candy Directory") %>
+
+<h1>Marcas</h1>
+
+<% @brands.each do |brand| %>
+  <div class="brand-card">
+    <h2><%= link_to brand.name, brand %></h2>
+    <% if brand.description.present? %>
+      <p><%= brand.description %></p>
+    <% end %>
+    <p class="brand-meta"><%= brand.country_of_origin %></p>
+  </div>
+<% end %>
