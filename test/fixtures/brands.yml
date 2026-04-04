@@ -1,0 +1,11 @@
+ambrosoli:
+  name: Ambrosoli
+  slug: ambrosoli
+  description: Chilean confectionery company founded in 1948.
+  country_of_origin: Chile
+
+costa:
+  name: Costa
+  slug: costa
+  description: Major Chilean chocolate and candy manufacturer.
+  country_of_origin: Chile
