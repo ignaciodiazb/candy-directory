@@ -9,11 +9,11 @@ puts "Seeding brands..."
 brands = {}
 
 [
-  { name: "Ambrosoli", description: "Chilean confectionery company founded in 1948, known for caramels and hard candies.", country_of_origin: "Chile" },
-  { name: "Costa", description: "Major Chilean chocolate and candy manufacturer, founded in 1916.", country_of_origin: "Chile" },
-  { name: "Dos en Uno", description: "Chilean candy brand known for gummies and fruit-flavored sweets.", country_of_origin: "Chile" },
-  { name: "McKay", description: "Chilean cookie and wafer brand, part of Nestlé Chile.", country_of_origin: "Chile" },
-  { name: "Arcor Chile", description: "Chilean subsidiary of the Argentine confectionery giant Arcor.", country_of_origin: "Argentina" }
+  { name: "Ambrosoli", description: "Empresa chilena de confites fundada en 1948, conocida por sus caramelos y dulces duros.", country_of_origin: "Chile" },
+  { name: "Costa", description: "Gran fabricante chileno de chocolates y dulces, fundada en 1907.", country_of_origin: "Chile" },
+  { name: "Dos en Uno", description: "Marca chilena de dulces conocida por sus gomitas y confites frutales.", country_of_origin: "Chile" },
+  { name: "McKay", description: "Marca chilena de galletas y obleas, parte de Nestlé Chile.", country_of_origin: "Chile" },
+  { name: "Arcor Chile", description: "Filial chilena del gigante argentino de golosinas Arcor.", country_of_origin: "Argentina" }
 ].each do |attrs|
   brands[attrs[:name]] = Brand.find_or_create_by!(name: attrs[:name]) do |b|
     b.description = attrs[:description]
@@ -30,11 +30,11 @@ puts "Seeding categories..."
 categories = {}
 
 [
-  { name: "Chocolate", description: "Chocolate bars and chocolate-covered treats." },
-  { name: "Caramelo", description: "Hard and soft caramels." },
-  { name: "Galleta", description: "Cookies and wafer-based treats." },
-  { name: "Gomita", description: "Gummy candies and jelly sweets." },
-  { name: "Chupete", description: "Lollipops and sucking candies." }
+  { name: "Chocolates", description: "Barras de chocolate y golosinas cubiertas de chocolate." },
+  { name: "Caramelos", description: "Caramelos duros y blandos." },
+  { name: "Galletas", description: "Galletas y obleas." },
+  { name: "Gomitas", description: "Caramelos de goma y gomitas." },
+  { name: "Chupetes", description: "Chupetes y caramelos para chupar." }
 ].each do |attrs|
   categories[attrs[:name]] = Category.find_or_create_by!(name: attrs[:name]) do |c|
     c.description = attrs[:description]
@@ -48,193 +48,193 @@ puts "  #{Category.count} categories seeded."
 puts "Seeding candies..."
 
 [
-  # Costa — Chocolate
+  # Costa — Chocolates
   {
     name: "Super Ocho",
-    brand: "Costa", category: "Chocolate",
-    description: "Iconic Chilean wafer bar covered in chocolate, filled with caramel. A national classic since 1956.",
+    brand: "Costa", category: "Chocolates",
+    description: "Icónica barra de oblea cubierta de chocolate con relleno de caramelo. Un clásico nacional desde 1956.",
     year_introduced: 1956, discontinued: false
   },
   {
     name: "Cocoa",
-    brand: "Costa", category: "Chocolate",
-    description: "Classic Chilean chocolate bar with a crispy wafer center.",
+    brand: "Costa", category: "Chocolates",
+    description: "Clásica barra de chocolate chilena con centro de oblea crocante.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Triángulo",
-    brand: "Costa", category: "Chocolate",
-    description: "Triangle-shaped chocolate with a crunchy filling.",
+    brand: "Costa", category: "Chocolates",
+    description: "Chocolate con forma de triángulo y relleno crocante.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Chokita",
-    brand: "Costa", category: "Chocolate",
-    description: "Small chocolate-covered candy. Originally sold as Negritas, renamed Chokita.",
+    brand: "Costa", category: "Chocolates",
+    description: "Pequeño dulce cubierto de chocolate. Se vendía originalmente como Negritas.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Sapito",
-    brand: "Costa", category: "Chocolate",
-    description: "Small frog-shaped chocolate candy, a favorite among children.",
+    brand: "Costa", category: "Chocolates",
+    description: "Pequeño chocolate con forma de rana, favorito de los niños.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Bon o Bon",
-    brand: "Costa", category: "Chocolate",
-    description: "Chocolate-covered ball filled with peanut cream and wafer crumble.",
+    brand: "Costa", category: "Chocolates",
+    description: "Bolita cubierta de chocolate con relleno de crema de maní y trocitos de oblea.",
     year_introduced: nil, discontinued: false
   },
 
-  # Ambrosoli — Caramelo
+  # Ambrosoli — Caramelos
   {
     name: "Caluga Media Hora",
-    brand: "Ambrosoli", category: "Caramelo",
-    description: "Traditional Chilean soft caramel, said to take half an hour to finish.",
+    brand: "Ambrosoli", category: "Caramelos",
+    description: "Tradicional caluga blanda chilena, conocida por durar media hora.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Mentita",
-    brand: "Ambrosoli", category: "Caramelo",
-    description: "Classic mint-flavored hard candy with a distinctive green wrapper.",
+    brand: "Ambrosoli", category: "Caramelos",
+    description: "Clásico caramelo duro sabor menta con su característico envoltorio verde.",
     year_introduced: 1950, discontinued: false
   },
   {
     name: "Calugas Surtidas",
-    brand: "Ambrosoli", category: "Caramelo",
-    description: "Assorted soft caramels in multiple flavors.",
+    brand: "Ambrosoli", category: "Caramelos",
+    description: "Calugas blandas surtidas en múltiples sabores.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Frutilla",
-    brand: "Ambrosoli", category: "Caramelo",
-    description: "Strawberry-flavored hard candy, one of Ambrosoli's most recognized flavors.",
+    brand: "Ambrosoli", category: "Caramelos",
+    description: "Caramelo duro sabor frutilla, uno de los más reconocidos de Ambrosoli.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Butter Toffees Ambrosoli",
-    brand: "Ambrosoli", category: "Caramelo",
-    description: "Creamy butter toffee caramels individually wrapped.",
+    brand: "Ambrosoli", category: "Caramelos",
+    description: "Cremosos toffees de mantequilla envueltos individualmente.",
     year_introduced: nil, discontinued: false
   },
 
-  # Ambrosoli — Chupete
+  # Ambrosoli — Chupetes
   {
     name: "Chupete Ambrosoli",
-    brand: "Ambrosoli", category: "Chupete",
-    description: "Classic lollipop in assorted fruit flavors, an Ambrosoli staple.",
+    brand: "Ambrosoli", category: "Chupetes",
+    description: "Clásico chupete en variados sabores de fruta, un clásico de Ambrosoli.",
     year_introduced: nil, discontinued: false
   },
 
-  # Dos en Uno — Gomita
+  # Dos en Uno — Gomitas
   {
     name: "Mellizos",
-    brand: "Dos en Uno", category: "Gomita",
-    description: "Twin-shaped gummy candies in fruit flavors, a Chilean childhood classic.",
+    brand: "Dos en Uno", category: "Gomitas",
+    description: "Gomitas con forma de mellizos en sabores frutales, un clásico de la infancia chilena.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Fruna",
-    brand: "Dos en Uno", category: "Gomita",
-    description: "Soft fruit-flavored candy, one of the most iconic Chilean sweets.",
+    brand: "Dos en Uno", category: "Gomitas",
+    description: "Dulce blando de fruta, uno de los más icónicos de Chile.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Nik",
-    brand: "Dos en Uno", category: "Gomita",
-    description: "Small round gummies with a powdery sour coating.",
+    brand: "Dos en Uno", category: "Gomitas",
+    description: "Pequeñas gomitas redondas con cubierta ácida en polvo.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Ácida",
-    brand: "Dos en Uno", category: "Gomita",
-    description: "Intensely sour gummy belts in assorted fruit flavors.",
+    brand: "Dos en Uno", category: "Gomitas",
+    description: "Tiras de gomita intensamente ácidas en variados sabores frutales.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Gomitas Ositos",
-    brand: "Dos en Uno", category: "Gomita",
-    description: "Classic bear-shaped gummies in assorted fruit flavors.",
+    brand: "Dos en Uno", category: "Gomitas",
+    description: "Clásicas gomitas con forma de oso en sabores frutales surtidos.",
     year_introduced: nil, discontinued: false
   },
 
-  # Dos en Uno — Chupete
+  # Dos en Uno — Chupetes
   {
     name: "Blow Pop",
-    brand: "Dos en Uno", category: "Chupete",
-    description: "Lollipop with a bubblegum center in various fruit flavors.",
+    brand: "Dos en Uno", category: "Chupetes",
+    description: "Chupete con centro de chicle en variados sabores frutales.",
     year_introduced: nil, discontinued: false
   },
 
-  # McKay — Galleta
+  # McKay — Galletas
   {
     name: "Kuky",
-    brand: "McKay", category: "Galleta",
-    description: "Chocolate-covered cream-filled wafer bar, a McKay icon.",
+    brand: "McKay", category: "Galletas",
+    description: "Barra de oblea rellena con crema y cubierta de chocolate, un ícono de McKay.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Tritón",
-    brand: "McKay", category: "Galleta",
-    description: "Sandwich cookie with vanilla cream filling, Chile's answer to Oreo.",
+    brand: "McKay", category: "Galletas",
+    description: "Galleta sándwich con relleno de crema de vainilla, la versión chilena de la Oreo.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Chocman",
-    brand: "McKay", category: "Galleta",
-    description: "Chocolate-flavored sandwich cookie with chocolate cream filling.",
+    brand: "McKay", category: "Galletas",
+    description: "Galleta sándwich de chocolate con relleno de crema de chocolate.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Óptimus",
-    brand: "McKay", category: "Galleta",
-    description: "Classic rectangular tea biscuit, widely used in Chilean desserts.",
+    brand: "McKay", category: "Galletas",
+    description: "Clásica galleta rectangular de té, ampliamente usada en postres chilenos.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Poker",
-    brand: "McKay", category: "Galleta",
-    description: "Thin, crispy rectangular crackers, a staple in Chilean households.",
+    brand: "McKay", category: "Galletas",
+    description: "Galletas rectangulares delgadas y crocantes, un básico en los hogares chilenos.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Morocha",
-    brand: "McKay", category: "Galleta",
-    description: "Dark chocolate wafer filled with vanilla cream.",
+    brand: "McKay", category: "Galletas",
+    description: "Oblea de chocolate oscuro rellena con crema de vainilla.",
     year_introduced: nil, discontinued: false
   },
 
-  # Arcor Chile — Chocolate
+  # Arcor Chile — Chocolates
   {
     name: "Bon o Bon Arcor",
-    brand: "Arcor Chile", category: "Chocolate",
-    description: "Argentine-origin chocolate ball with peanut cream filling, popular across Chile.",
+    brand: "Arcor Chile", category: "Chocolates",
+    description: "Bolita de chocolate de origen argentino con relleno de crema de maní, popular en Chile.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Cofler",
-    brand: "Arcor Chile", category: "Chocolate",
-    description: "Milk chocolate bar with rice crisps, made by Arcor.",
+    brand: "Arcor Chile", category: "Chocolates",
+    description: "Barra de chocolate con leche y arroz inflado, fabricada por Arcor.",
+    year_introduced: nil, discontinued: false
+  },
+  {
+    name: "Rocklets",
+    brand: "Arcor Chile", category: "Chocolates",
+    description: "Bolitas de chocolate cubiertas de colores, el equivalente chileno de los M&Ms.",
     year_introduced: nil, discontinued: false
   },
 
-  # Arcor Chile — Caramelo
-  {
-    name: "Rocklets",
-    brand: "Arcor Chile", category: "Chocolate",
-    description: "Colorful candy-coated chocolate buttons, Chile's equivalent of M&Ms.",
-    year_introduced: nil, discontinued: false
-  },
+  # Arcor Chile — Caramelos
   {
     name: "Butter Toffees Arcor",
-    brand: "Arcor Chile", category: "Caramelo",
-    description: "Smooth butter-flavored toffee caramels in gold wrappers.",
+    brand: "Arcor Chile", category: "Caramelos",
+    description: "Suaves toffees sabor mantequilla en envoltorios dorados.",
     year_introduced: nil, discontinued: false
   },
   {
     name: "Arcor Masticables",
-    brand: "Arcor Chile", category: "Caramelo",
-    description: "Soft, chewy fruit-flavored caramels in assorted flavors.",
+    brand: "Arcor Chile", category: "Caramelos",
+    description: "Caramelos blandos y masticables en variados sabores frutales.",
     year_introduced: nil, discontinued: false
   }
 ].each do |attrs|

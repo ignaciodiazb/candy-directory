@@ -4,7 +4,7 @@ class BrandTest < ActiveSupport::TestCase
   # --- Validations ---
 
   test "is valid with valid attributes" do
-    brand = Brand.new(name: "Dos en Uno", description: "Chilean brand")
+    brand = Brand.new(name: "Dos en Uno", description: "Marca chilena")
     assert brand.valid?
   end
 

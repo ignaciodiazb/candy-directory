@@ -1,9 +1,9 @@
 chocolate:
-  name: Chocolate
-  slug: chocolate
-  description: Chocolate bars and chocolate-covered treats.
+  name: Chocolates
+  slug: chocolates
+  description: Barras de chocolate y golosinas cubiertas de chocolate.
 
 caramelo:
-  name: Caramelo
-  slug: caramelo
-  description: Hard and soft caramels.
+  name: Caramelos
+  slug: caramelos
+  description: Caramelos duros y blandos.
