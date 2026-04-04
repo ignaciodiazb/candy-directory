@@ -38,3 +38,7 @@ Rails 8.1.2 app with SQLite, Hotwire (Turbo + Stimulus), and Propshaft assets. N
 ## Commit messages
 
 Use the [Conventional Commits](https://www.conventionalcommits.org/) standard: `type(scope): description`. Common types: `feat`, `fix`, `refactor`, `test`, `chore`, `docs`.
+
+## Branch names
+
+Follow the same type prefix as conventional commits: `type/short-description`. Examples: `feat/candy-browse-pages`, `fix/slug-collision`, `chore/seed-data`.
