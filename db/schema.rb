@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_02_024639) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_05_230225) do
   create_table "brands", force: :cascade do |t|
     t.string "country_of_origin", default: "Chile"
     t.datetime "created_at", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_02_024639) do
     t.integer "year_introduced"
     t.index ["brand_id"], name: "index_candies_on_brand_id"
     t.index ["category_id"], name: "index_candies_on_category_id"
+    t.index ["discontinued"], name: "index_candies_on_discontinued"
     t.index ["slug"], name: "index_candies_on_slug", unique: true
   end
 

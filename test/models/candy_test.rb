@@ -77,4 +77,64 @@ class CandyTest < ActiveSupport::TestCase
   test "belongs to a category" do
     assert_equal categories(:chocolate), candies(:super_ocho).category
   end
+
+  # --- Scopes ---
+
+  test "active scope excludes discontinued candies" do
+    assert_not_includes Candy.active, candies(:negrita)
+  end
+
+  test "active scope includes non-discontinued candies" do
+    assert_includes Candy.active, candies(:super_ocho)
+  end
+
+  test "search scope finds by name" do
+    results = Candy.search("Super")
+    assert_includes results, candies(:super_ocho)
+    assert_not_includes results, candies(:mentita)
+  end
+
+  test "search scope finds by description" do
+    results = Candy.search("oblea")
+    assert_includes results, candies(:super_ocho)
+  end
+
+  test "search scope is case-insensitive" do
+    assert_includes Candy.search("super ocho"), candies(:super_ocho)
+  end
+
+  test "search scope returns all when term is blank" do
+    assert_equal Candy.count, Candy.search("").count
+    assert_equal Candy.count, Candy.search(nil).count
+  end
+
+  test "by_brand scope filters by brand_id" do
+    costa = brands(:costa)
+    results = Candy.by_brand(costa.id)
+    assert results.all? { |c| c.brand_id == costa.id }
+    assert_includes results, candies(:super_ocho)
+    assert_not_includes results, candies(:mentita)
+  end
+
+  test "by_brand scope returns all when given nil" do
+    assert_equal Candy.count, Candy.by_brand(nil).count
+  end
+
+  test "by_category scope filters by category_id" do
+    chocolate = categories(:chocolate)
+    results = Candy.by_category(chocolate.id)
+    assert results.all? { |c| c.category_id == chocolate.id }
+    assert_includes results, candies(:super_ocho)
+    assert_not_includes results, candies(:mentita)
+  end
+
+  test "by_category scope returns all when given nil" do
+    assert_equal Candy.count, Candy.by_category(nil).count
+  end
+
+  test "scopes can be chained" do
+    results = Candy.active.by_brand(brands(:costa).id).search("ocho")
+    assert_includes results, candies(:super_ocho)
+    assert_equal 1, results.count
+  end
 end
