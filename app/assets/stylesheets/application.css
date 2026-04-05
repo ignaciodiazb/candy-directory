@@ -26,3 +26,76 @@ main {
   margin: 0 auto;
   padding: 1rem;
 }
+
+.candy-filters {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.filter-row {
+  margin-bottom: 0.75rem;
+}
+
+.filter-row label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.filter-row input[type="search"],
+.filter-row select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.filter-row--inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-row--inline label {
+  display: inline;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.filter-actions input[type="submit"] {
+  padding: 0.5rem 1.5rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clear-filters {
+  color: #666;
+}
+
+.empty-state {
+  color: #666;
+  font-style: italic;
+}
+
+.discontinued-badge {
+  font-size: 0.75rem;
+  background: #e74c3c;
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  vertical-align: middle;
+}
