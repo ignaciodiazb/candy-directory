@@ -31,3 +31,12 @@ mentita:
   category: caramelo
   year_introduced: 1950
   discontinued: false
+
+negrita:
+  name: Negrita
+  slug: negrita
+  description: Galleta cubierta de chocolate con relleno de crema.
+  brand: costa
+  category: chocolate
+  year_introduced: 1945
+  discontinued: true

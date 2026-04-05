@@ -1,5 +1,10 @@
 <div class="candy-card">
-  <h3><%= link_to candy.name, candy %></h3>
+  <h3>
+    <%= link_to candy.name, candy %>
+    <% if candy.discontinued? %>
+      <span class="discontinued-badge">Descontinuado</span>
+    <% end %>
+  </h3>
   <p class="candy-meta">
     <%= link_to candy.brand.name, candy.brand %> &middot;
     <%= link_to candy.category.name, candy.category %>

@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @candies = @category.candies.includes(:brand).order(:name)
+    @candies = @category.candies.active.includes(:brand).order(:name)
   end
 
   private
