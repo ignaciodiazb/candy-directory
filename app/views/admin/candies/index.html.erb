@@ -1,0 +1,42 @@
+<% content_for :title, "Admin — Dulces" %>
+
+<div class="admin-header">
+  <h1>Dulces</h1>
+  <%= link_to "Nuevo dulce", new_admin_candy_path, class: "btn-secondary" %>
+</div>
+
+<% if @candies.any? %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Categoría</th>
+        <th>Año</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @candies.each do |candy| %>
+        <tr>
+          <td><%= link_to candy.name, admin_candy_path(candy) %></td>
+          <td><%= candy.brand.name %></td>
+          <td><%= candy.category.name %></td>
+          <td><%= candy.year_introduced %></td>
+          <td><%= candy.discontinued? ? "Descontinuado" : "Activo" %></td>
+          <td>
+            <div class="actions">
+              <%= link_to "Editar", edit_admin_candy_path(candy) %>
+              <%= button_to "Eliminar", admin_candy_path(candy), method: :delete,
+                    class: "btn-delete",
+                    data: { turbo_confirm: "¿Eliminar #{candy.name}?" } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">No hay dulces registrados aún.</p>
+<% end %>

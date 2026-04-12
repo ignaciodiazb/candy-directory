@@ -1,0 +1,36 @@
+<% content_for :title, "Admin — Categorías" %>
+
+<div class="admin-header">
+  <h1>Categorías</h1>
+  <%= link_to "Nueva categoría", new_admin_category_path, class: "btn-secondary" %>
+</div>
+
+<% if @categories.any? %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= link_to category.name, admin_category_path(category) %></td>
+          <td><%= truncate(category.description, length: 60) %></td>
+          <td>
+            <div class="actions">
+              <%= link_to "Editar", edit_admin_category_path(category) %>
+              <%= button_to "Eliminar", admin_category_path(category), method: :delete,
+                    class: "btn-delete",
+                    data: { turbo_confirm: "¿Eliminar #{category.name}?" } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">No hay categorías registradas aún.</p>
+<% end %>

@@ -1,0 +1,26 @@
+<%= form_with model: [:admin, category], class: "admin-form" do |f| %>
+  <% if category.errors.any? %>
+    <div class="error-list">
+      <strong><%= pluralize(category.errors.count, "error") %> impidieron guardar esta categoría:</strong>
+      <ul>
+        <% category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Nombre" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "Descripción" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit category.new_record? ? "Crear categoría" : "Guardar cambios", class: "btn-primary" %>
+  </div>
+<% end %>

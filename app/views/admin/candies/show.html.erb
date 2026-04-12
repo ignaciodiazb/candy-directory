@@ -1,0 +1,29 @@
+<% content_for :title, "Admin — #{@candy.name}" %>
+
+<div class="admin-header">
+  <h1><%= @candy.name %></h1>
+  <div style="display:flex;gap:0.5rem;">
+    <%= link_to "Editar", edit_admin_candy_path(@candy), class: "btn-secondary" %>
+    <%= link_to "← Volver", admin_candies_path, class: "btn-secondary" %>
+  </div>
+</div>
+
+<dl>
+  <dt>Marca</dt>
+  <dd><%= @candy.brand.name %></dd>
+
+  <dt>Categoría</dt>
+  <dd><%= @candy.category.name %></dd>
+
+  <dt>Descripción</dt>
+  <dd><%= @candy.description.presence || "—" %></dd>
+
+  <dt>Año de introducción</dt>
+  <dd><%= @candy.year_introduced.presence || "—" %></dd>
+
+  <dt>Estado</dt>
+  <dd><%= @candy.discontinued? ? "Descontinuado" : "Activo" %></dd>
+
+  <dt>Slug</dt>
+  <dd><%= @candy.slug %></dd>
+</dl>

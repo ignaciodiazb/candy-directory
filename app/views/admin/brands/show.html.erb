@@ -1,0 +1,20 @@
+<% content_for :title, "Admin — #{@brand.name}" %>
+
+<div class="admin-header">
+  <h1><%= @brand.name %></h1>
+  <div style="display:flex;gap:0.5rem;">
+    <%= link_to "Editar", edit_admin_brand_path(@brand), class: "btn-secondary" %>
+    <%= link_to "← Volver", admin_brands_path, class: "btn-secondary" %>
+  </div>
+</div>
+
+<dl>
+  <dt>País de origen</dt>
+  <dd><%= @brand.country_of_origin %></dd>
+
+  <dt>Descripción</dt>
+  <dd><%= @brand.description.presence || "—" %></dd>
+
+  <dt>Slug</dt>
+  <dd><%= @brand.slug %></dd>
+</dl>

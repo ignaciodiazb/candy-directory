@@ -1,0 +1,36 @@
+<% content_for :title, "Admin — Marcas" %>
+
+<div class="admin-header">
+  <h1>Marcas</h1>
+  <%= link_to "Nueva marca", new_admin_brand_path, class: "btn-secondary" %>
+</div>
+
+<% if @brands.any? %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>País de origen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @brands.each do |brand| %>
+        <tr>
+          <td><%= link_to brand.name, admin_brand_path(brand) %></td>
+          <td><%= brand.country_of_origin %></td>
+          <td>
+            <div class="actions">
+              <%= link_to "Editar", edit_admin_brand_path(brand) %>
+              <%= button_to "Eliminar", admin_brand_path(brand), method: :delete,
+                    class: "btn-delete",
+                    data: { turbo_confirm: "¿Eliminar #{brand.name}?" } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">No hay marcas registradas aún.</p>
+<% end %>

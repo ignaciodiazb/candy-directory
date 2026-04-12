@@ -1,0 +1,8 @@
+<% content_for :title, "Admin — Editar #{@brand.name}" %>
+
+<div class="admin-header">
+  <h1>Editar marca</h1>
+  <%= link_to "← Volver", admin_brands_path, class: "btn-secondary" %>
+</div>
+
+<%= render "form", brand: @brand %>
