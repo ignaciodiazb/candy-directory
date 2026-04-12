@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   resources :candies, only: %i[index show]
   resources :brands, only: %i[index show]
   resources :categories, only: %i[index show]
+
+  namespace :admin do
+    root "candies#index"
+    resources :candies
+    resources :brands
+    resources :categories
+  end
 end
