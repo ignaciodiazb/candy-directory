@@ -1,0 +1,46 @@
+<%= form_with model: [:admin, candy], class: "admin-form" do |f| %>
+  <% if candy.errors.any? %>
+    <div class="error-list">
+      <strong><%= pluralize(candy.errors.count, "error") %> impidieron guardar este dulce:</strong>
+      <ul>
+        <% candy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Nombre" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "Descripción" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brand_id, "Marca" %>
+    <%= f.select :brand_id, @brands.map { |b| [b.name, b.id] }, { prompt: "Seleccionar marca" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id, "Categoría" %>
+    <%= f.select :category_id, @categories.map { |c| [c.name, c.id] }, { prompt: "Seleccionar categoría" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year_introduced, "Año de introducción" %>
+    <%= f.number_field :year_introduced, min: 1800, max: Date.current.year %>
+  </div>
+
+  <div class="field field--checkbox">
+    <%= f.check_box :discontinued %>
+    <%= f.label :discontinued, "Descontinuado" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit candy.new_record? ? "Crear dulce" : "Guardar cambios", class: "btn-primary" %>
+  </div>
+<% end %>

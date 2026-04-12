@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Admin — Candy Directory" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-body">
+    <nav class="admin-nav">
+      <span class="admin-nav-brand"><%= link_to "Admin", admin_root_path %></span>
+      <div class="admin-nav-links">
+        <%= link_to "Dulces", admin_candies_path %>
+        <%= link_to "Marcas", admin_brands_path %>
+        <%= link_to "Categorías", admin_categories_path %>
+      </div>
+      <div class="admin-nav-meta">
+        <%= link_to "← Ver sitio", root_path %>
+      </div>
+    </nav>
+
+    <% if flash[:notice] %>
+      <div class="flash flash-notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="flash flash-alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

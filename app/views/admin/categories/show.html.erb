@@ -1,0 +1,17 @@
+<% content_for :title, "Admin — #{@category.name}" %>
+
+<div class="admin-header">
+  <h1><%= @category.name %></h1>
+  <div style="display:flex;gap:0.5rem;">
+    <%= link_to "Editar", edit_admin_category_path(@category), class: "btn-secondary" %>
+    <%= link_to "← Volver", admin_categories_path, class: "btn-secondary" %>
+  </div>
+</div>
+
+<dl>
+  <dt>Descripción</dt>
+  <dd><%= @category.description.presence || "—" %></dd>
+
+  <dt>Slug</dt>
+  <dd><%= @category.slug %></dd>
+</dl>

@@ -1,0 +1,8 @@
+<% content_for :title, "Admin — Editar #{@category.name}" %>
+
+<div class="admin-header">
+  <h1>Editar categoría</h1>
+  <%= link_to "← Volver", admin_categories_path, class: "btn-secondary" %>
+</div>
+
+<%= render "form", category: @category %>
