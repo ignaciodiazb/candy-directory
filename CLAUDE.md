@@ -35,6 +35,18 @@ Rails 8.1.2 app with SQLite, Hotwire (Turbo + Stimulus), and Propshaft assets. N
 
 **Style**: RuboCop with `rubocop-rails-omakase` (Omakase defaults, minimal custom config in `.rubocop.yml`).
 
+## Rails Conventions
+
+- Always use `bin/rails` (not `rails`) to ensure the app's bundled version of Rails is used
+- Always use Rails generators instead of creating files manually:
+  - Models: `bin/rails generate model`
+  - Controllers: `bin/rails generate controller`
+  - Migrations: `bin/rails generate migration`
+  - Scaffolds: `bin/rails generate scaffold` (when appropriate)
+- Never manually create model, controller, or migration files from scratch
+- After generating, customize the output — generators are starting points, not final output
+- Always review and edit generated migrations before running `bin/rails db:migrate`
+
 ## Commit messages
 
 Use the [Conventional Commits](https://www.conventionalcommits.org/) standard: `type(scope): description`. Common types: `feat`, `fix`, `refactor`, `test`, `chore`, `docs`.
