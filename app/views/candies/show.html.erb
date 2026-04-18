@@ -2,6 +2,14 @@
 
 <h1><%= @candy.name %></h1>
 
+<div class="candy-photo">
+  <% if @candy.photo.attached? %>
+    <%= image_tag @candy.photo.variant(resize_to_limit: [400, 400]), alt: @candy.name %>
+  <% else %>
+    <p class="candy-photo__placeholder">Sin foto</p>
+  <% end %>
+</div>
+
 <p class="candy-meta">
   Marca: <%= link_to @candy.brand.name, @candy.brand %> &middot;
   Categoría: <%= link_to @candy.category.name, @candy.category %>

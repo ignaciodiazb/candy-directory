@@ -137,4 +137,16 @@ class CandyTest < ActiveSupport::TestCase
     assert_includes results, candies(:super_ocho)
     assert_equal 1, results.count
   end
+
+  # --- Photo attachment ---
+
+  test "attaches a photo" do
+    candy = candies(:super_ocho)
+    candy.photo.attach(
+      io: File.open(Rails.root.join("test/fixtures/files/candy.png")),
+      filename: "candy.png",
+      content_type: "image/png"
+    )
+    assert candy.photo.attached?
+  end
 end

@@ -68,4 +68,11 @@ class CandiesControllerTest < ActionDispatch::IntegrationTest
     get candy_path(id: "nonexistent-candy")
     assert_response :not_found
   end
+
+  test "show renders 200 for candy with attached photo" do
+    candy = candies(:super_ocho)
+    candy.photo.attach(fixture_file_upload("candy.png", "image/png"))
+    get candy_path(candy)
+    assert_response :success
+  end
 end

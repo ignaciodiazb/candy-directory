@@ -40,6 +40,11 @@
     <%= f.label :discontinued, "Descontinuado" %>
   </div>
 
+  <div class="field">
+    <%= f.label :photo, "Foto" %>
+    <%= f.file_field :photo, accept: "image/*" %>
+  </div>
+
   <div class="form-actions">
     <%= f.submit candy.new_record? ? "Crear dulce" : "Guardar cambios", class: "btn-primary" %>
   </div>
