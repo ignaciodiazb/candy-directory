@@ -47,6 +47,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def category_params
-    params.expect(category: [:name, :description])
+    params.expect(category: [ :name, :description ])
   end
 end

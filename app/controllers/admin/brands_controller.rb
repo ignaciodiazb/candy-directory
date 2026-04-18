@@ -47,6 +47,6 @@ class Admin::BrandsController < Admin::BaseController
   end
 
   def brand_params
-    params.expect(brand: [:name, :description, :country_of_origin])
+    params.expect(brand: [ :name, :description, :country_of_origin ])
   end
 end
