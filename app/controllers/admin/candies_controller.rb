@@ -50,6 +50,6 @@ class Admin::CandiesController < Admin::BaseController
   end
 
   def candy_params
-    params.require(:candy).permit(:name, :description, :brand_id, :category_id, :year_introduced, :discontinued)
+    params.expect(candy: [:name, :description, :brand_id, :category_id, :year_introduced, :discontinued])
   end
 end
