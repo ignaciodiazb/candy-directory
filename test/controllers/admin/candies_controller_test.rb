@@ -111,4 +111,16 @@ class Admin::CandiesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_candies_path
     assert_equal "Dulce eliminado exitosamente.", flash[:notice]
   end
+
+  # --- photo upload ---
+
+  test "create with photo attaches the image" do
+    photo = fixture_file_upload("candy.png", "image/png")
+    assert_difference("Candy.count") do
+      post admin_candies_path,
+        params: valid_candy_params.deep_merge(candy: { photo: photo }),
+        headers: admin_headers
+    end
+    assert Candy.last.photo.attached?
+  end
 end
