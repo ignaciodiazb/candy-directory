@@ -47,6 +47,26 @@ Rails 8.1.2 app with SQLite, Hotwire (Turbo + Stimulus), and Propshaft assets. N
 - After generating, customize the output — generators are starting points, not final output
 - Always review and edit generated migrations before running `bin/rails db:migrate`
 
+### Strong Parameters
+
+Always use `params.expect` (Rails 8+) instead of `params.require(...).permit(...)`.
+
+**Correct:**
+```ruby
+def candy_params
+  params.expect(candy: [:name, :description, :brand_id])
+end
+```
+
+**Never use:**
+```ruby
+def candy_params
+  params.require(:candy).permit(:name, :description, :brand_id)
+end
+```
+
+This applies to all generated controllers, scaffolds, and any manual strong parameter methods.
+
 ## Commit messages
 
 Use the [Conventional Commits](https://www.conventionalcommits.org/) standard: `type(scope): description`. Common types: `feat`, `fix`, `refactor`, `test`, `chore`, `docs`.
