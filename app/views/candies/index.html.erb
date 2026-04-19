@@ -2,28 +2,33 @@
 
 <h1>Dulces Chilenos</h1>
 
-<%= form_with url: candies_path, method: :get, class: "candy-filters" do |f| %>
+<%= form_with url: candies_path, method: :get, class: "candy-filters",
+      data: { controller: "search", turbo_frame: "candies_results" } do |f| %>
   <div class="filter-row">
     <%= f.label :q, "Buscar" %>
-    <%= f.search_field :q, value: params[:q], placeholder: "Nombre o descripción..." %>
+    <%= f.search_field :q, value: params[:q], placeholder: "Nombre o descripción...",
+          data: { action: "input->search#search" } %>
   </div>
 
   <div class="filter-row">
     <%= f.label :brand, "Marca" %>
     <%= f.select :brand,
           options_from_collection_for_select(@brands, :slug, :name, params[:brand]),
-          { include_blank: "Todas las marcas" } %>
+          { include_blank: "Todas las marcas" },
+          { data: { action: "change->search#submit" } } %>
   </div>
 
   <div class="filter-row">
     <%= f.label :category, "Categoría" %>
     <%= f.select :category,
           options_from_collection_for_select(@categories, :slug, :name, params[:category]),
-          { include_blank: "Todas las categorías" } %>
+          { include_blank: "Todas las categorías" },
+          { data: { action: "change->search#submit" } } %>
   </div>
 
   <div class="filter-row filter-row--inline">
-    <%= f.check_box :show_discontinued, checked: params[:show_discontinued] == "1" %>
+    <%= f.check_box :show_discontinued, checked: params[:show_discontinued] == "1",
+          data: { action: "change->search#submit" } %>
     <%= f.label :show_discontinued, "Incluir descontinuados" %>
   </div>
 
@@ -33,8 +38,9 @@
   </div>
 <% end %>
 
-<%= render partial: "candy", collection: @candies %>
-
-<% if @candies.empty? %>
-  <p class="empty-state">No se encontraron dulces.</p>
+<%= turbo_frame_tag "candies_results", data: { turbo_action: "advance" } do %>
+  <%= render partial: "candy", collection: @candies %>
+  <% if @candies.empty? %>
+    <p class="empty-state">No se encontraron dulces.</p>
+  <% end %>
 <% end %>
