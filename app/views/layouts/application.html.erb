@@ -29,7 +29,19 @@
       <%= link_to "Dulces", candies_path %>
       <%= link_to "Marcas", brands_path %>
       <%= link_to "Categorías", categories_path %>
+      <% if authenticated? %>
+        <%= link_to "Admin", admin_root_path %>
+      <% else %>
+        <%= link_to "Admin", new_session_path %>
+      <% end %>
     </nav>
+
+    <% if flash[:notice] %>
+      <div class="flash flash-notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="flash flash-alert"><%= flash[:alert] %></div>
+    <% end %>
 
     <main>
       <%= yield %>
