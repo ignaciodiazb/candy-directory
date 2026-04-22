@@ -1,4 +1,5 @@
 class BrandsController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_brand, only: :show
 
   def index

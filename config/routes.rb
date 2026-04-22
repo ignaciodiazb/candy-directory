@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :brands, only: %i[index show]
   resources :categories, only: %i[index show]
 
+  resource :session
+
   namespace :admin do
     root "candies#index"
     resources :candies

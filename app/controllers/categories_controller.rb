@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_category, only: :show
 
   def index
