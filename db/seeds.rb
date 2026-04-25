@@ -248,4 +248,14 @@ puts "Seeding candies..."
 end
 
 puts "  #{Candy.count} candies seeded."
-puts "Done! Seeded #{Brand.count} brands, #{Category.count} categories, #{Candy.count} candies."
+
+# Admin user — credentials from ENV with dev defaults
+admin_email    = ENV.fetch("ADMIN_EMAIL", "admin@example.com")
+admin_password = ENV.fetch("ADMIN_PASSWORD", "password")
+
+User.find_or_create_by!(email_address: admin_email) do |u|
+  u.password = admin_password
+  u.admin    = true
+end
+
+puts "Done! Seeded #{Brand.count} brands, #{Category.count} categories, #{Candy.count} candies, #{User.count} user(s)."

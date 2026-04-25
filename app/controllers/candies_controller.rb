@@ -1,4 +1,5 @@
 class CandiesController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_candy, only: :show
 
   def index
