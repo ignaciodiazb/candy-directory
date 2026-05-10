@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "candies#index"
 
-  resources :candies, only: %i[index show]
+  resources :candies, only: %i[index show] do
+    resources :reviews, only: %i[create update destroy]
+  end
   resources :brands, only: %i[index show]
   resources :categories, only: %i[index show]
 
