@@ -15,6 +15,12 @@
   Categoría: <%= link_to @candy.category.name, @candy.category %>
 </p>
 
+<% if @candy.reviews_count > 0 %>
+  <p class="candy-rating">
+    ★ <%= @candy.ratings_average.round(1) %> &middot; <%= pluralize(@candy.reviews_count, "reseña") %>
+  </p>
+<% end %>
+
 <% if @candy.description.present? %>
   <p><%= @candy.description %></p>
 <% end %>
@@ -26,3 +32,23 @@
 <p><%= @candy.discontinued? ? "Descontinuado" : "Disponible" %></p>
 
 <%= link_to "← Volver a dulces", candies_path %>
+
+<section class="reviews-section">
+  <h2>Reseñas</h2>
+
+  <div id="reviews_list">
+    <%= render partial: "reviews/review", collection: @candy.reviews.includes(:user).recent %>
+    <% if @candy.reviews.empty? %>
+      <p class="empty-state">Todavía no hay reseñas. ¡Sé el primero!</p>
+    <% end %>
+  </div>
+
+  <% if authenticated? %>
+    <% existing_review = @candy.reviews.find_by(user: Current.user) %>
+    <%= render "reviews/form", candy: @candy, review: existing_review || Review.new %>
+  <% else %>
+    <%= turbo_frame_tag "new_review" do %>
+      <p class="sign-in-prompt"><%= link_to "Inicia sesión", new_session_path, data: { turbo_frame: "_top" } %> para dejar una reseña.</p>
+    <% end %>
+  <% end %>
+</section>

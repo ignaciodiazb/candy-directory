@@ -1,0 +1,7 @@
+<%= turbo_stream.remove dom_id(@review) %>
+<%= turbo_stream.replace "new_review" do %>
+  <%= render "form", candy: @candy, review: Review.new %>
+<% end %>
+<%= turbo_stream.update "flash" do %>
+  <p class="flash-notice">Reseña eliminada.</p>
+<% end %>
