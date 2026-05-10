@@ -3,12 +3,14 @@ class CandiesController < ApplicationController
   before_action :set_candy, only: :show
 
   def index
-    @candies = Candy.includes(:brand, :category)
-    @candies = @candies.active unless params[:show_discontinued] == "1"
-    @candies = @candies.by_brand(brand_from_slug&.id)
-    @candies = @candies.by_category(category_from_slug&.id)
-    @candies = @candies.search(params[:q])
-    @candies = @candies.order(:name)
+    scope = Candy.includes(:brand, :category)
+    scope = scope.active unless params[:show_discontinued] == "1"
+    scope = scope.by_brand(brand_from_slug&.id)
+    scope = scope.by_category(category_from_slug&.id)
+    scope = scope.search(params[:q])
+    scope = scope.order(:name)
+
+    @pagy, @candies = pagy(scope)
 
     @brands = Brand.order(:name)
     @categories = Category.order(:name)
