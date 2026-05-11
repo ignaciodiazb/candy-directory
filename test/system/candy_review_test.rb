@@ -3,9 +3,13 @@ require "application_system_test_case"
 class CandyReviewTest < ApplicationSystemTestCase
   def sign_in_as_regular
     visit new_session_path
-    fill_in "Email address", with: users(:regular).email_address
-    fill_in "Password", with: "password"
-    click_on "Sign in"
+    fill_in "Email", with: users(:regular).email_address
+    fill_in "Contraseña", with: "password"
+    click_button "Iniciar sesión"
+    # Wait for the Turbo Drive redirect chain to finish: regular user is sent
+    # to /admin and then bounced back to / with an alert. Without this wait,
+    # subsequent visits race the redirects and the session cookie is missed.
+    assert_current_path root_path
   end
 
   test "signed-in user can submit a review and see it without page reload" do
