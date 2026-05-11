@@ -1,0 +1,15 @@
+<div id="<%= dom_id(review) %>" class="review-card">
+  <div class="review-header">
+    <span class="review-rating"><%= "★" * review.rating %><%= "☆" * (5 - review.rating) %></span>
+    <span class="review-author"><%= review.user.email_address %></span>
+    <span class="review-date"><%= review.created_at.strftime("%b %d, %Y") %></span>
+  </div>
+  <p class="review-body"><%= review.body %></p>
+  <% if authenticated? && (review.user_id == Current.user.id || Current.user.admin?) %>
+    <div class="review-actions">
+      <%= button_to "Eliminar", candy_review_path(review.candy, review), method: :delete,
+            data: { turbo_confirm: "¿Eliminar esta reseña?" },
+            class: "btn-danger-sm" %>
+    </div>
+  <% end %>
+</div>

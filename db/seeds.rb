@@ -258,4 +258,34 @@ User.find_or_create_by!(email_address: admin_email) do |u|
   u.admin    = true
 end
 
-puts "Done! Seeded #{Brand.count} brands, #{Category.count} categories, #{Candy.count} candies, #{User.count} user(s)."
+# Regular (non-admin) user for browsing and reviews
+regular_email    = ENV.fetch("REGULAR_EMAIL", "regular@example.com")
+regular_password = ENV.fetch("REGULAR_PASSWORD", "password")
+
+regular_user = User.find_or_create_by!(email_address: regular_email) do |u|
+  u.password = regular_password
+  u.admin    = false
+end
+
+# --- Reviews ---
+
+puts "Seeding reviews..."
+
+admin_user = User.find_by!(email_address: admin_email)
+
+[
+  { candy: "Super Ocho",        user: admin_user,   rating: 5, body: "El mejor dulce chileno sin duda. La oblea con caramelo y chocolate es perfecta." },
+  { candy: "Super Ocho",        user: regular_user, rating: 4, body: "Excelente barra, aunque a veces la oblea viene un poco quebrada." },
+  { candy: "Caluga Media Hora", user: admin_user,   rating: 5, body: "Una caluga que de verdad dura. Sabor clásico inigualable." },
+  { candy: "Mellizos",          user: regular_user, rating: 4, body: "Sabor frutal muy rico, me recuerda a la infancia." },
+  { candy: "Rocklets",          user: admin_user,   rating: 3, body: "Buenos, aunque prefiero otras opciones de chocolate." },
+  { candy: "Tritón",            user: regular_user, rating: 5, body: "Mejor que la Oreo, y eso es decir mucho." }
+].each do |attrs|
+  candy = Candy.find_by!(name: attrs[:candy])
+  Review.find_or_create_by!(candy: candy, user: attrs[:user]) do |r|
+    r.rating = attrs[:rating]
+    r.body   = attrs[:body]
+  end
+end
+
+puts "Done! Seeded #{Brand.count} brands, #{Category.count} categories, #{Candy.count} candies, #{User.count} user(s), #{Review.count} review(s)."

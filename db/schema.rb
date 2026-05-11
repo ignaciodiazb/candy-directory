@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_20_040348) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_04_021312) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_040348) do
     t.text "description"
     t.boolean "discontinued", default: false, null: false
     t.string "name", null: false
+    t.float "ratings_average", default: 0.0, null: false
+    t.integer "reviews_count", default: 0, null: false
     t.string "slug", null: false
     t.datetime "updated_at", null: false
     t.integer "year_introduced"
@@ -74,6 +76,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_040348) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "candy_id", null: false
+    t.datetime "created_at", null: false
+    t.integer "rating", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["candy_id"], name: "index_reviews_on_candy_id"
+    t.index ["user_id", "candy_id"], name: "index_reviews_on_user_id_and_candy_id", unique: true
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -98,5 +112,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_040348) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "candies", "brands"
   add_foreign_key "candies", "categories"
+  add_foreign_key "reviews", "candies"
+  add_foreign_key "reviews", "users"
   add_foreign_key "sessions", "users"
 end

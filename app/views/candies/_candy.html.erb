@@ -1,6 +1,6 @@
 <div class="candy-card">
   <h3>
-    <%= link_to candy.name, candy %>
+    <%= link_to candy.name, candy, data: { turbo_frame: "_top" } %>
     <% if candy.discontinued? %>
       <span class="discontinued-badge">Descontinuado</span>
     <% end %>
@@ -15,4 +15,11 @@
   <% if candy.year_introduced %>
     <p class="candy-year">Desde <%= candy.year_introduced %></p>
   <% end %>
+  <p class="candy-rating">
+    <% if candy.reviews_count > 0 %>
+      ★ <%= candy.ratings_average.round(1) %> &middot; <%= pluralize(candy.reviews_count, "reseña") %>
+    <% else %>
+      <span class="no-reviews">Sin reseñas</span>
+    <% end %>
+  </p>
 </div>

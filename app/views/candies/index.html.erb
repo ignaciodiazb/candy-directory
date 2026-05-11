@@ -43,4 +43,5 @@
   <% if @candies.empty? %>
     <p class="empty-state">No se encontraron dulces.</p>
   <% end %>
+  <%= raw(pagy_nav(@pagy)) if @pagy.pages > 1 %>
 <% end %>

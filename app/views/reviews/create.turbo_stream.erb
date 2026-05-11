@@ -1,0 +1,13 @@
+<% if @review.persisted? %>
+  <%= turbo_stream.prepend "reviews_list", partial: "review", locals: { review: @review } %>
+  <%= turbo_stream.replace "new_review" do %>
+    <%= render "form", candy: @candy, review: @review %>
+  <% end %>
+  <%= turbo_stream.update "flash" do %>
+    <p class="flash-notice">Reseña publicada.</p>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "new_review" do %>
+    <%= render "form", candy: @candy, review: @review %>
+  <% end %>
+<% end %>

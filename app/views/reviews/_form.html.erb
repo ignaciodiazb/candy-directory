@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "new_review" do %>
+  <div class="review-form">
+    <h3><%= review.new_record? ? "Escribe una reseña" : "Editar reseña" %></h3>
+    <%= form_with model: [candy, review] do |f| %>
+      <% if review.errors.any? %>
+        <div class="field-errors">
+          <% review.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="form-field">
+        <%= f.label :rating, "Calificación" %>
+        <%= f.select :rating, (1..5).map { |n| [ "#{"★" * n} (#{n})", n ] },
+              { selected: review.rating, include_blank: "Elige una calificación" } %>
+      </div>
+
+      <div class="form-field">
+        <%= f.label :body, "Reseña" %>
+        <%= f.text_area :body, rows: 4, placeholder: "Cuéntanos tu experiencia con este dulce..." %>
+      </div>
+
+      <%= f.submit review.new_record? ? "Publicar reseña" : "Guardar cambios", class: "btn-primary" %>
+    <% end %>
+  </div>
+<% end %>

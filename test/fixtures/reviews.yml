@@ -1,0 +1,17 @@
+admin_review_super_ocho:
+  candy: super_ocho
+  user: admin
+  rating: 5
+  body: Un clásico chileno que nunca falla. La oblea con chocolate es perfecta.
+
+regular_review_super_ocho:
+  candy: super_ocho
+  user: regular
+  rating: 4
+  body: Muy buena barra, aunque a veces la oblea viene un poco quebrada.
+
+admin_review_cocoa:
+  candy: cocoa
+  user: admin
+  rating: 3
+  body: Buen chocolate pero no tan especial como el Super Ocho.
