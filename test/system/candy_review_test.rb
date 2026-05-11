@@ -35,8 +35,13 @@ class CandyReviewTest < ApplicationSystemTestCase
 
     assert_selector "#reviews_list .review-card", text: reviews(:regular_review_super_ocho).body
 
+    # Headless Chrome + Selenium + Turbo's data-turbo-confirm can race the
+    # native window.confirm() dialog faster than accept_confirm can catch it,
+    # surfacing as Capybara::ModalNotFound on CI. Stub it to auto-accept.
+    page.execute_script("window.confirm = () => true")
+
     within "##{dom_id(reviews(:regular_review_super_ocho))}" do
-      accept_confirm { click_on "Eliminar" }
+      click_on "Eliminar"
     end
 
     assert_no_selector "##{dom_id(reviews(:regular_review_super_ocho))}"
